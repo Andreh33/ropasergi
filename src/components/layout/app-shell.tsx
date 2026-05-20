@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { CartDrawer } from './cart-drawer';
 import { Footer } from './footer';
 import { GrainOverlay } from './grain-overlay';
+import { InstallPrompt } from './install-prompt';
 import { Nav } from './nav';
 import { NavCmdK } from './nav-cmdk';
 import { PageTransitionOverlay } from './page-transition';
@@ -41,6 +42,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <GlobalInteractions />
           <ScrollVelocityFX />
           <LogoTripleClick />
+          <InstallPrompt />
         </SmoothScroll>
       </AudioContextProvider>
     </GsapContext>

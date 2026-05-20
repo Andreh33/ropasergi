@@ -3,7 +3,7 @@
   "vcs": { "enabled": false, "clientKind": "git", "useIgnoreFile": false },
   "files": {
     "ignoreUnknown": false,
-    "ignore": ["node_modules", ".next", "out", "build", "public"]
+    "ignore": ["node_modules", ".next", "out", "build", "public", ".vercel", ".data"]
   },
   "formatter": {
     "enabled": true,
