@@ -1,0 +1,98 @@
+/* PROYECTO 1 · Design tokens (single source of truth) */
+
+:root {
+  /* fondos — grafito con tinte morado (menos oscuro que negro puro) */
+  --bg-void: #16131f;
+  --bg-asphalt: #1f1a2c;
+  --bg-tarmac: #2a2440;
+  --bg-bone: #f5f1e8;
+  --bg-paper: #efe9dc;
+
+  /* tinta */
+  --ink: #f5f1e8;
+  --ink-mute: #8a857a;
+  --ink-faint: #4a4842;
+
+  /* neones */
+  --acid: #ccff00;
+  --acid-deep: #9bd300;
+  --magenta: #ff1f6a;
+  --magenta-deep: #cc0f50;
+  --cyber: #00e5ff;
+  --volt: #ffe600;
+  --blood: #c81f1f;
+
+  /* morado de marca — vídeo, acentos, glows */
+  --violet: #8b5cf6;
+  --violet-deep: #6d28d9;
+  --violet-glow: #b794f6;
+
+  /* rojo ritual — sello de pacto / juramento (uso ceremonial, no UI) */
+  --ritual: #9b0e0e; /* sangre coagulada, trazo del sigilo */
+  --ritual-deep: #5c0606; /* sombra del lacre */
+  --ritual-ink: #e23b3b; /* brillo del sello al estamparse */
+
+  /* operadores */
+  --stroke: rgba(245, 241, 232, 0.12);
+  --stroke-strong: rgba(245, 241, 232, 0.32);
+  --stroke-ink: rgba(245, 241, 232, 0.92);
+
+  /* radios */
+  --r-0: 0px;
+  --r-1: 2px;
+
+  /* tipografía — fallback con Fontsource (PP Neue Machina no incluida por licencia) */
+  --font-display: "Space Grotesk Variable", "NeueMachina", system-ui, sans-serif;
+  --font-serif: "Fraunces Variable", "EditorialNew", Georgia, serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  /* escala */
+  --fs-mega: clamp(5rem, 18vw, 22rem);
+  --fs-display: clamp(3.5rem, 9vw, 11rem);
+  --fs-h2: clamp(2.25rem, 5vw, 5rem);
+  --fs-h3: clamp(1.5rem, 2.5vw, 2.5rem);
+  --fs-body: clamp(1rem, 1.05vw, 1.125rem);
+  --fs-small: 0.875rem;
+  --fs-micro: 0.7rem;
+
+  /* line-heights */
+  --lh-tight: 0.88;
+  --lh-snug: 1.05;
+  --lh-normal: 1.45;
+  --lh-loose: 1.65;
+
+  /* spacing */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+  --s-11: 192px;
+  --s-12: 256px;
+
+  /* grid */
+  --grid-cols: 12;
+  --grid-gutter: 16px;
+  --grid-margin: clamp(16px, 4vw, 96px);
+  --grid-max: 1840px;
+
+  /* z-index */
+  --z-base: 0;
+  --z-content: 10;
+  --z-nav: 50;
+  --z-drawer: 70;
+  --z-cmdk: 80;
+  --z-cursor: 90;
+  --z-grain: 100;
+  --z-loader: 110;
+  --z-toast: 120;
+
+  /* safe areas */
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+}

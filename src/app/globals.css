@@ -1,0 +1,267 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+@import "@fontsource-variable/space-grotesk";
+@import "@fontsource-variable/fraunces/wght.css";
+@import "@fontsource-variable/fraunces/wght-italic.css";
+@import "@fontsource-variable/jetbrains-mono";
+
+@theme inline {
+  --color-bg-void: var(--bg-void);
+  --color-bg-asphalt: var(--bg-asphalt);
+  --color-bg-tarmac: var(--bg-tarmac);
+  --color-bg-bone: var(--bg-bone);
+  --color-bg-paper: var(--bg-paper);
+  --color-ink: var(--ink);
+  --color-ink-mute: var(--ink-mute);
+  --color-ink-faint: var(--ink-faint);
+  --color-acid: var(--acid);
+  --color-acid-deep: var(--acid-deep);
+  --color-magenta: var(--magenta);
+  --color-magenta-deep: var(--magenta-deep);
+  --color-cyber: var(--cyber);
+  --color-volt: var(--volt);
+  --color-blood: var(--blood);
+  --color-violet: var(--violet);
+  --color-violet-deep: var(--violet-deep);
+  --color-violet-glow: var(--violet-glow);
+  --color-ritual: var(--ritual);
+  --color-ritual-deep: var(--ritual-deep);
+  --color-ritual-ink: var(--ritual-ink);
+  --color-stroke: var(--stroke);
+  --color-stroke-strong: var(--stroke-strong);
+  --color-stroke-ink: var(--stroke-ink);
+
+  --font-display: var(--font-display);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+
+  --text-mega: var(--fs-mega);
+  --text-display: var(--fs-display);
+  --text-h2: var(--fs-h2);
+  --text-h3: var(--fs-h3);
+  --text-body: var(--fs-body);
+  --text-small: var(--fs-small);
+  --text-micro: var(--fs-micro);
+
+  --breakpoint-xs: 380px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1840px;
+
+  --radius-r0: 0px;
+  --radius-r1: 2px;
+}
+
+/* reset minimal */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-void);
+  color: var(--ink);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  overscroll-behavior: none;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+::selection {
+  background: var(--acid);
+  color: var(--bg-void);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--acid);
+  outline-offset: 2px;
+}
+
+/* utilidades específicas que Tailwind v4 no genera por defecto con nuestros tokens */
+.font-display {
+  font-family: var(--font-display);
+}
+.font-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-mega {
+  font-size: var(--fs-mega);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.05em;
+}
+.text-display {
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.04em;
+}
+.text-h2 {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-snug);
+  letter-spacing: -0.03em;
+}
+.text-h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  letter-spacing: -0.02em;
+}
+.text-body {
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+}
+.text-small {
+  font-size: var(--fs-small);
+  line-height: var(--lh-normal);
+}
+.text-micro {
+  font-size: var(--fs-micro);
+  line-height: var(--lh-normal);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bg-void {
+  background-color: var(--bg-void);
+}
+.bg-asphalt {
+  background-color: var(--bg-asphalt);
+}
+.bg-tarmac {
+  background-color: var(--bg-tarmac);
+}
+.bg-bone {
+  background-color: var(--bg-bone);
+}
+.bg-paper {
+  background-color: var(--bg-paper);
+}
+.text-ink {
+  color: var(--ink);
+}
+.text-ink-mute {
+  color: var(--ink-mute);
+}
+.text-ink-faint {
+  color: var(--ink-faint);
+}
+.text-acid {
+  color: var(--acid);
+}
+.text-magenta {
+  color: var(--magenta);
+}
+.text-blood {
+  color: var(--blood);
+}
+.border-stroke {
+  border-color: var(--stroke);
+}
+.border-stroke-strong {
+  border-color: var(--stroke-strong);
+}
+
+/* scrollbar minimalista */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--stroke-strong);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-mute);
+}
+
+/* lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* skip link */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: var(--z-toast);
+  padding: 12px 20px;
+  background: var(--acid);
+  color: var(--bg-void);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transition: top 0.2s ease-out;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
