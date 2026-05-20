@@ -58,7 +58,7 @@ export const SizePicker = forwardRef<SizePickerHandle, Props>(function SizePicke
               className={cn(
                 'min-w-12 h-10 px-3 grid place-items-center font-mono text-micro uppercase tracking-[0.18em] border transition-all',
                 isActive
-                  ? 'bg-[var(--acid)] text-[var(--bg-void)] border-[var(--acid)]'
+                  ? 'bg-[var(--neon-azure)] text-[var(--bg-void)] border-[var(--neon-azure)]'
                   : 'text-[var(--ink)] border-[var(--stroke-strong)]',
                 isSold && 'opacity-40 line-through cursor-not-allowed',
                 !isActive && value !== null && 'opacity-50',

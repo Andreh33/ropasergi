@@ -28,7 +28,7 @@ export function AdminLogin({ onSuccess }: { onSuccess: () => void }) {
     <div className="min-h-screen grid place-items-center bg-[var(--bg-void)] text-[var(--ink)] px-6">
       <form onSubmit={onSubmit} className="w-full max-w-sm space-y-6">
         <div className="text-center space-y-2">
-          <p className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)]">
+          <p className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-azure)]">
             ACCESO RESTRINGIDO
           </p>
           <h1 className="font-display text-h2 tracking-[-0.04em] uppercase">PANEL · PROYECTO 1</h1>
@@ -40,7 +40,7 @@ export function AdminLogin({ onSuccess }: { onSuccess: () => void }) {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="CONTRASEÑA"
             autoFocus
-            className="w-full px-4 py-4 bg-transparent border border-[var(--stroke-strong)] font-mono text-small uppercase tracking-[0.18em] text-[var(--ink)] placeholder:text-[var(--ink-mute)] focus:border-[var(--acid)]"
+            className="w-full px-4 py-4 bg-transparent border border-[var(--stroke-strong)] font-mono text-small uppercase tracking-[0.18em] text-[var(--ink)] placeholder:text-[var(--ink-mute)] focus:border-[var(--neon-azure)]"
           />
           {error ? (
             <p className="mt-2 font-mono text-micro uppercase tracking-[0.18em] text-[var(--blood)]">
@@ -51,7 +51,7 @@ export function AdminLogin({ onSuccess }: { onSuccess: () => void }) {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-4 bg-[var(--acid)] text-[var(--bg-void)] font-mono text-micro uppercase tracking-[0.18em] disabled:opacity-50"
+          className="w-full py-4 bg-[var(--neon-azure)] text-[var(--bg-void)] font-mono text-micro uppercase tracking-[0.18em] disabled:opacity-50"
         >
           {loading ? 'COMPROBANDO...' : 'ENTRAR'}
         </button>

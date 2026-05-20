@@ -1,41 +1,36 @@
 /* PROYECTO 1 · Design tokens (single source of truth) */
 
 :root {
-  /* fondos — grafito con tinte morado (menos oscuro que negro puro) */
-  --bg-void: #16131f;
-  --bg-asphalt: #1f1a2c;
-  --bg-tarmac: #2a2440;
+  /* fondos — negro neutro absoluto, sin tinte morado */
+  --bg-void: #050507;
+  --bg-asphalt: #0b0b0e;
+  --bg-tarmac: #15151a;
   --bg-bone: #f5f1e8;
   --bg-paper: #efe9dc;
 
   /* tinta */
   --ink: #f5f1e8;
-  --ink-mute: #8a857a;
-  --ink-faint: #4a4842;
+  --ink-mute: #807e86;
+  --ink-faint: #3c3b42;
 
-  /* neones */
-  --acid: #ccff00;
-  --acid-deep: #9bd300;
-  --magenta: #ff1f6a;
-  --magenta-deep: #cc0f50;
-  --cyber: #00e5ff;
-  --volt: #ffe600;
-  --blood: #c81f1f;
+  /* NEONES — los dos protagonistas, sin excepciones */
+  --neon-azure: #1e63ff; /* primario · disponible · CTA · hover · foco */
+  --neon-azure-glow: #4a82ff; /* hover / brillo del azul */
+  --neon-azure-deep: #0b3fcc; /* profundidad / sombra del azul */
 
-  /* morado de marca — vídeo, acentos, glows */
-  --violet: #8b5cf6;
-  --violet-deep: #6d28d9;
-  --violet-glow: #b794f6;
+  --neon-blood: #ff1230; /* decisión · agotado · error · cierre del pacto */
+  --neon-blood-glow: #ff3a54; /* hover / brillo del rojo */
+  --neon-blood-deep: #c70022; /* profundidad / sombra del rojo */
 
-  /* rojo ritual — sello de pacto / juramento (uso ceremonial, no UI) */
-  --ritual: #9b0e0e; /* sangre coagulada, trazo del sigilo */
-  --ritual-deep: #5c0606; /* sombra del lacre */
-  --ritual-ink: #e23b3b; /* brillo del sello al estamparse */
+  /* alias semántico — errores y agotado heredan el rojo neón */
+  --blood: var(--neon-blood);
 
   /* operadores */
   --stroke: rgba(245, 241, 232, 0.12);
   --stroke-strong: rgba(245, 241, 232, 0.32);
   --stroke-ink: rgba(245, 241, 232, 0.92);
+  --stroke-azure: rgba(30, 99, 255, 0.45);
+  --stroke-blood: rgba(255, 18, 48, 0.45);
 
   /* radios */
   --r-0: 0px;

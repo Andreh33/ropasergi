@@ -46,11 +46,11 @@ export function FeaturedDrop({ products }: { products: Product[] }) {
       ref={root}
       className="relative bg-[var(--bg-void)] py-[12vh] border-t border-[var(--stroke)]"
       style={{ paddingLeft: 'var(--grid-margin)', paddingRight: 'var(--grid-margin)' }}
-      aria-label="Drop destacado"
+      aria-label="Destacados de la tienda"
     >
       <header className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
         <div>
-          <p className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)] mb-3">
+          <p className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-azure)] mb-3">
             DISPONIBLE AHORA · {products.length} {products.length === 1 ? 'PRENDA' : 'PRENDAS'}
           </p>
           <h2 className="font-display text-h2 tracking-[-0.04em] leading-[0.9] uppercase">
@@ -60,9 +60,9 @@ export function FeaturedDrop({ products }: { products: Product[] }) {
           </h2>
         </div>
         <Link
-          href="/drop"
+          href="/tienda"
           prefetch
-          className="self-start md:self-end font-mono text-micro uppercase tracking-[0.18em] border border-[var(--stroke-strong)] px-6 py-3 hover:bg-[var(--acid)] hover:text-[var(--bg-void)] transition-colors"
+          className="self-start md:self-end font-mono text-micro uppercase tracking-[0.18em] border border-[var(--stroke-strong)] px-6 py-3 hover:bg-[var(--neon-azure)] hover:text-[var(--bg-void)] transition-colors"
         >
           VER TODA LA TIENDA →
         </Link>

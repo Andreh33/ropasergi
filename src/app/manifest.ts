@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Ocho prendas. Una cápsula. Una sola vez. Desde Sevilla.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#16131f',
-    theme_color: '#16131f',
+    background_color: '#050507',
+    theme_color: '#050507',
     orientation: 'portrait',
     icons: [
       { src: '/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },

@@ -69,7 +69,7 @@ export function InstallPrompt() {
             paddingBottom: 'var(--safe-bottom)',
           }}
         >
-          <div className="relative border border-[var(--violet)] bg-[var(--bg-tarmac)]/95 backdrop-blur-md p-5">
+          <div className="relative border border-[var(--neon-azure)] bg-[var(--bg-tarmac)]/95 backdrop-blur-md p-5">
             <button
               type="button"
               onClick={dismiss}
@@ -80,7 +80,7 @@ export function InstallPrompt() {
             </button>
 
             <div className="flex items-start gap-3 pr-6">
-              <span className="grid place-items-center w-10 h-10 shrink-0 bg-[var(--violet)] text-[var(--ink)]">
+              <span className="grid place-items-center w-10 h-10 shrink-0 bg-[var(--neon-azure)] text-[var(--ink)]">
                 <Download size={18} />
               </span>
               <div>
@@ -96,7 +96,7 @@ export function InstallPrompt() {
             <button
               type="button"
               onClick={install}
-              className="mt-4 w-full py-3 bg-[var(--violet)] hover:bg-[var(--violet-deep)] transition-colors text-[var(--ink)] font-mono text-micro uppercase tracking-[0.18em]"
+              className="mt-4 w-full py-3 bg-[var(--neon-azure)] hover:bg-[var(--neon-azure-deep)] transition-colors text-[var(--ink)] font-mono text-micro uppercase tracking-[0.18em]"
             >
               DESCARGAR APP
             </button>

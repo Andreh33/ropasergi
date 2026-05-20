@@ -75,8 +75,8 @@ export function HeroManifesto() {
         const curtainStep = curtainRef.current?.querySelector('[data-curtain-step]');
         if (curtainStep) {
           tl.to(curtainStep, { text: 'INICIANDO...', duration: 0.6 }, 1.0)
-            .to(curtainStep, { text: 'PRIMER DROP...', duration: 0.6 }, 1.8)
-            .to(curtainStep, { text: 'SEVILLA · MMXXVI · ED. 001', duration: 0.8 }, 2.6);
+            .to(curtainStep, { text: 'ABRIENDO LA VITRINA...', duration: 0.6 }, 1.8)
+            .to(curtainStep, { text: 'TARRAGONA · MMXXVI', duration: 0.8 }, 2.6);
         }
 
         // Subir cortina (t=3.0 → 4.2)
@@ -202,7 +202,7 @@ export function HeroManifesto() {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(to bottom, rgba(22,19,31,0.35) 0%, rgba(22,19,31,0.15) 40%, rgba(22,19,31,0.75) 100%)',
+              'linear-gradient(to bottom, rgba(5,5,7,0.30) 0%, rgba(5,5,7,0.05) 40%, rgba(5,5,7,0.85) 100%)',
           }}
         />
       </div>
@@ -239,10 +239,10 @@ export function HeroManifesto() {
         <motion.div
           ref={titleRef}
           style={{ x: spx, y: spy }}
-          className="absolute top-[22vh] left-[var(--grid-margin)] right-[var(--grid-margin)] font-display text-mega uppercase text-[var(--ink)] mix-blend-difference pointer-events-none"
+          className="absolute top-[22vh] left-[var(--grid-margin)] right-[var(--grid-margin)] font-display text-[clamp(2.8rem,15vw,21rem)] uppercase text-[var(--ink)] mix-blend-difference pointer-events-none"
         >
-          <span className="block leading-[0.84]">PROYECTO</span>
-          <span className="block leading-[0.84] pl-[8vw]">01</span>
+          <span className="block leading-[0.84] whitespace-nowrap">PROYECTO</span>
+          <span className="block leading-[0.84] whitespace-nowrap pl-[8vw]">01</span>
         </motion.div>
 
         {/* Mono micros izquierda */}
@@ -250,8 +250,8 @@ export function HeroManifesto() {
           ref={monoLeftRef}
           className="absolute bottom-[14vh] left-[var(--grid-margin)] font-mono text-micro uppercase tracking-[0.18em] text-[var(--ink-mute)] space-y-1 max-w-[40ch]"
         >
-          <p>MMXXVI — ED. 001 — SEVILLA</p>
-          <p>PRIMER DROP — 8 OBJETOS NUMERADOS</p>
+          <p>MMXXVI — TARRAGONA — CATALUNYA</p>
+          <p>BOUTIQUE MULTIMARCA — CHÁNDALES Y RELOJES</p>
         </div>
 
         {/* Contador */}
@@ -278,7 +278,7 @@ export function HeroManifesto() {
             </defs>
             <text className="fill-[var(--ink)] font-mono text-[10px] uppercase tracking-[0.3em]">
               <textPath href="#circ" startOffset="0">
-                DROP 01 · DROP 01 · DROP 01 · DROP 01 · DROP 01 ·
+                PROYECTO 1 · TARRAGONA · PROYECTO 1 · TARRAGONA ·
               </textPath>
             </text>
           </svg>

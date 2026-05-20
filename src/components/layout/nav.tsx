@@ -10,7 +10,7 @@ import { MuteToggle } from './mute-toggle';
 
 const ITEMS = [
   { href: '/manifiesto', label: 'MANIFIESTO' },
-  { href: '/drop', label: 'DROP' },
+  { href: '/tienda', label: 'TIENDA' },
   { href: '/#culto', label: 'CULTO' },
 ];
 
@@ -52,7 +52,7 @@ export function Nav({ onOpenCmdK }: { onOpenCmdK: () => void }) {
       animate={{
         height: scrolled ? 56 : 96,
         y: hidden ? -100 : 0,
-        backgroundColor: scrolled || isPDP ? 'rgba(6,6,6,0.65)' : 'rgba(6,6,6,0)',
+        backgroundColor: scrolled || isPDP ? 'rgba(5,5,7,0.65)' : 'rgba(5,5,7,0)',
         backdropFilter: scrolled || isPDP ? 'blur(12px)' : 'blur(0px)',
       }}
       transition={{ duration: 0.5, ease: [0.18, 0, 0, 1] }}
@@ -81,7 +81,7 @@ export function Nav({ onOpenCmdK }: { onOpenCmdK: () => void }) {
         <ul className="hidden md:flex gap-8 items-center font-mono text-micro uppercase tracking-[0.18em] text-[var(--ink-mute)]">
           {ITEMS.map((it) => {
             const active =
-              pathname === it.href || (it.href === '/drop' && pathname?.startsWith('/drop'));
+              pathname === it.href || (it.href === '/tienda' && pathname?.startsWith('/tienda'));
             return (
               <li key={it.href}>
                 <Link
@@ -99,7 +99,7 @@ export function Nav({ onOpenCmdK }: { onOpenCmdK: () => void }) {
                     aria-hidden
                     className={cn(
                       'absolute left-0 right-0 -bottom-0.5 h-[1px] origin-left scale-x-0 transition-transform duration-300',
-                      'bg-[var(--acid)]',
+                      'bg-[var(--neon-azure)]',
                       active && 'scale-x-100',
                     )}
                   />
@@ -115,7 +115,7 @@ export function Nav({ onOpenCmdK }: { onOpenCmdK: () => void }) {
             onClick={onOpenCmdK}
             data-cursor="button"
             aria-label="Buscar"
-            className="grid place-items-center w-9 h-9 text-[var(--ink)] hover:text-[var(--acid)] transition-colors"
+            className="grid place-items-center w-9 h-9 text-[var(--ink)] hover:text-[var(--neon-azure)] transition-colors"
           >
             <Search size={18} />
           </button>
@@ -125,7 +125,7 @@ export function Nav({ onOpenCmdK }: { onOpenCmdK: () => void }) {
             onClick={openCart}
             data-cursor="button"
             aria-label={count > 0 ? `Carro (${count})` : 'Carro vacío'}
-            className="relative grid place-items-center w-9 h-9 text-[var(--ink)] hover:text-[var(--acid)] transition-colors"
+            className="relative grid place-items-center w-9 h-9 text-[var(--ink)] hover:text-[var(--neon-azure)] transition-colors"
           >
             <ShoppingBag size={18} />
             {count > 0 ? (
@@ -133,7 +133,7 @@ export function Nav({ onOpenCmdK }: { onOpenCmdK: () => void }) {
                 key={count}
                 animate={cartFlash ? { scale: [1, 1.4, 1] } : { scale: 1 }}
                 transition={{ duration: 0.4 }}
-                className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 grid place-items-center font-mono text-[10px] bg-[var(--acid)] text-[var(--bg-void)]"
+                className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 grid place-items-center font-mono text-[10px] bg-[var(--neon-azure)] text-[var(--bg-void)]"
               >
                 {count}
               </motion.span>

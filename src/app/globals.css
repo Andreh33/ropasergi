@@ -15,22 +15,17 @@
   --color-ink: var(--ink);
   --color-ink-mute: var(--ink-mute);
   --color-ink-faint: var(--ink-faint);
-  --color-acid: var(--acid);
-  --color-acid-deep: var(--acid-deep);
-  --color-magenta: var(--magenta);
-  --color-magenta-deep: var(--magenta-deep);
-  --color-cyber: var(--cyber);
-  --color-volt: var(--volt);
-  --color-blood: var(--blood);
-  --color-violet: var(--violet);
-  --color-violet-deep: var(--violet-deep);
-  --color-violet-glow: var(--violet-glow);
-  --color-ritual: var(--ritual);
-  --color-ritual-deep: var(--ritual-deep);
-  --color-ritual-ink: var(--ritual-ink);
+  --color-azure: var(--neon-azure);
+  --color-azure-glow: var(--neon-azure-glow);
+  --color-azure-deep: var(--neon-azure-deep);
+  --color-blood: var(--neon-blood);
+  --color-blood-glow: var(--neon-blood-glow);
+  --color-blood-deep: var(--neon-blood-deep);
   --color-stroke: var(--stroke);
   --color-stroke-strong: var(--stroke-strong);
   --color-stroke-ink: var(--stroke-ink);
+  --color-stroke-azure: var(--stroke-azure);
+  --color-stroke-blood: var(--stroke-blood);
 
   --font-display: var(--font-display);
   --font-serif: var(--font-serif);
@@ -78,14 +73,19 @@ html {
   overscroll-behavior: none;
   /* salvaguarda anti-scroll-horizontal en móvil (clip no rompe position:sticky) */
   overflow-x: clip;
+  width: 100%;
 }
 
 body {
   min-height: 100dvh;
+  width: 100%;
+  max-width: 100%;
+  /* bloquea el desplazamiento lateral: nada de irse de lado a lado */
+  overflow-x: clip;
 }
 
 ::selection {
-  background: var(--acid);
+  background: var(--neon-azure);
   color: var(--bg-void);
 }
 
@@ -120,7 +120,7 @@ video {
 }
 
 :focus-visible {
-  outline: 2px solid var(--acid);
+  outline: 2px solid var(--neon-azure);
   outline-offset: 2px;
 }
 
@@ -195,14 +195,11 @@ video {
 .text-ink-faint {
   color: var(--ink-faint);
 }
-.text-acid {
-  color: var(--acid);
-}
-.text-magenta {
-  color: var(--magenta);
+.text-azure {
+  color: var(--neon-azure);
 }
 .text-blood {
-  color: var(--blood);
+  color: var(--neon-blood);
 }
 .border-stroke {
   border-color: var(--stroke);
@@ -255,7 +252,7 @@ html.lenis body {
   left: 16px;
   z-index: var(--z-toast);
   padding: 12px 20px;
-  background: var(--acid);
+  background: var(--neon-azure);
   color: var(--bg-void);
   font-family: var(--font-mono);
   font-size: var(--fs-micro);
@@ -266,4 +263,65 @@ html.lenis body {
 
 .skip-link:focus {
   top: 16px;
+}
+
+/* fade de la galería de la PDP al cambiar de foto */
+@keyframes pdpFade {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* patrón de fondo sutil de la tienda: rejilla de puntos tenue */
+.shop-bg {
+  background-image: radial-gradient(rgba(245, 241, 232, 0.045) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: -1px -1px;
+}
+
+/* borde de neón animado alrededor de las cards: líneas azul + rojo girando */
+@property --neon-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes neonSpin {
+  to {
+    --neon-angle: 360deg;
+  }
+}
+.neon-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--neon-angle),
+    transparent 0% 6%,
+    var(--neon-azure) 17%,
+    transparent 33% 56%,
+    var(--neon-blood) 67%,
+    transparent 84% 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: neonSpin 5s linear infinite;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.55;
+  transition: opacity 0.4s ease;
+}
+.neon-card:hover::before {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .neon-card::before {
+    animation: none;
+  }
 }

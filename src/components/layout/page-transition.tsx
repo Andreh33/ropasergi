@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 const ROUTE_LABEL: Record<string, string> = {
   '/': 'VOLVER AL UMBRAL',
-  '/drop': 'EL DROP',
+  '/tienda': 'LA TIENDA',
   '/manifiesto': 'EL MANIFIESTO',
   '/leyenda': 'LEYENDA',
   '/pacto-firmado': 'PACTO FIRMADO',

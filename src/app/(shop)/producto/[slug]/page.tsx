@@ -1,6 +1,6 @@
+import { Gallery } from '@/components/pdp/gallery';
 import { ProductInfo } from '@/components/pdp/product-info';
 import { RelatedProducts } from '@/components/pdp/related-products';
-import { Viewer3DShell } from '@/components/pdp/viewer-3d-shell';
 import { PRODUCTS } from '@/lib/data/products';
 import { getCatalog, getCatalogProduct } from '@/lib/server/catalog';
 import type { Metadata } from 'next';
@@ -39,7 +39,7 @@ export default async function ProductPage({ params }: Params) {
     <article className="relative bg-[var(--bg-void)]">
       <div className="grid grid-cols-1 md:grid-cols-12 md:gap-0 pt-[10vh] md:pt-0">
         <div className="md:col-span-7 md:sticky md:top-0 md:h-[100dvh] relative">
-          <Viewer3DShell product={product} />
+          <Gallery product={product} />
         </div>
         <div className="md:col-span-5" style={{ paddingLeft: 'var(--grid-margin)' }}>
           <ProductInfo product={product} />

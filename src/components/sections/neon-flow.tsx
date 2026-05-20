@@ -2,24 +2,31 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * Fondo animado de líneas de neón fluidas (acid, magenta, cyber, violet) con glow,
- * sobre fondo oscuro. Siempre activo, sin dependencias de red. Reemplaza la "mancha"
- * difusa por algo más definido y vibrante, manteniendo el movimiento de fondo.
+ * Fondo animado del hero: un campo de neón líquido que CUBRE todo el fondo —
+ * masas de azul eléctrico (#1E63FF) y rojo sangre (#FF1230) que fluyen y se
+ * deforman (domain-warped fbm). Los dos colores son campos aditivos
+ * independientes (donde se solapan → blanco caliente, nunca morado). Sobre
+ * negro absoluto. WebGL, siempre activo, sin dependencias de red.
  */
 const FRAG = `
 precision highp float;
 uniform vec2 uRes;
 uniform float uTime;
 
-float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+float hash(vec2 p){ p = fract(p * vec2(123.34, 345.45)); p += dot(p, p + 34.345); return fract(p.x * p.y); }
 
-// línea de luz fina con glow (monocromática)
-float lightLine(vec2 p, float yBase, float freq, float amp, float speed, float phase, float thick){
-  float y = yBase + sin(p.x * freq + uTime * speed + phase) * amp
-                  + sin(p.x * freq * 2.6 + uTime * speed * 0.5) * amp * 0.3;
-  float d = abs(p.y - y);
-  float glow = thick / (d + 0.0009);
-  return pow(glow, 1.35);
+float noise(vec2 p){
+  vec2 i = floor(p), f = fract(p);
+  float a = hash(i), b = hash(i + vec2(1.0, 0.0));
+  float c = hash(i + vec2(0.0, 1.0)), d = hash(i + vec2(1.0, 1.0));
+  vec2 u = f * f * (3.0 - 2.0 * f);
+  return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+}
+
+float fbm(vec2 p){
+  float v = 0.0, a = 0.5;
+  for(int i = 0; i < 5; i++){ v += a * noise(p); p *= 2.0; a *= 0.5; }
+  return v;
 }
 
 void main(){
@@ -27,27 +34,36 @@ void main(){
   float aspect = uRes.x / uRes.y;
   vec2 p = vec2(uv.x * aspect, uv.y);
 
-  // un haz de líneas finas, todas del mismo color (acid), creando un campo de luz
-  float light = 0.0;
-  light += lightLine(p, 0.40, 1.7, 0.16, 0.42, 0.0, 0.0042);
-  light += lightLine(p, 0.50, 1.4, 0.14, -0.34, 1.6, 0.0036);
-  light += lightLine(p, 0.58, 2.1, 0.12, 0.55, 3.1, 0.0030);
-  light += lightLine(p, 0.46, 1.1, 0.18, 0.28, 4.4, 0.0034);
+  float t = uTime * 0.05;
 
-  // color único: acid (verde neón). Núcleo casi blanco, halo acid.
-  vec3 acid = vec3(0.80, 1.00, 0.00);
-  vec3 col = acid * light + vec3(1.0) * pow(light, 2.2) * 0.5;
+  // domain warping → flujo orgánico que llena toda la pantalla
+  vec2 wB = vec2(fbm(p * 1.3 + vec2(0.0, t)), fbm(p * 1.3 + vec2(5.2, t * 0.8)));
+  vec2 wR = vec2(fbm(p * 1.1 + vec2(3.1, -t)), fbm(p * 1.1 + vec2(1.7, -t * 0.9)));
 
-  // fondo grafito
-  vec3 bg = vec3(0.075, 0.066, 0.105);
-  col += bg;
+  float fieldB = fbm(p * 1.8 + wB * 1.7);
+  float fieldR = fbm(p * 1.6 + wR * 1.7 + 10.0);
+
+  float b = pow(smoothstep(0.28, 0.86, fieldB), 1.4);
+  float r = pow(smoothstep(0.30, 0.88, fieldR), 1.4);
+
+  vec3 cBlue = vec3(0.118, 0.388, 1.000); // #1E63FF
+  vec3 cRed  = vec3(1.000, 0.071, 0.188); // #FF1230
+
+  // campos aditivos: nunca se mezclan a morado
+  vec3 col = cBlue * b * 1.35 + cRed * r * 1.35;
+
+  // donde azul y rojo coinciden → blanco caliente
+  col += vec3(1.0) * pow(b * r, 0.85) * 0.9;
+
+  // negro neutro de base (cubre todo, sin huecos)
+  col += vec3(0.020, 0.020, 0.028);
 
   // grano sutil
-  col -= hash(uv * uRes.xy + uTime) * 0.018;
+  col -= hash(uv * uRes.xy + uTime) * 0.020;
 
-  // viñeta marcada → más dramatismo / foco central
-  float vig = smoothstep(1.15, 0.25, length(uv - 0.5));
-  col *= mix(0.4, 1.0, vig);
+  // viñeta muy suave: oscurece bordes sin dejar de cubrir
+  float vig = smoothstep(1.5, 0.25, length(uv - 0.5));
+  col *= mix(0.62, 1.05, vig);
 
   // tone-map
   col = col / (col + vec3(1.0));

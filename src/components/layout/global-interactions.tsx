@@ -32,16 +32,16 @@ export function GlobalInteractions() {
             className="absolute inset-0 opacity-30"
             style={{
               backgroundImage:
-                'linear-gradient(to right, var(--acid) 1px, transparent 1px), linear-gradient(to bottom, var(--acid) 1px, transparent 1px)',
+                'linear-gradient(to right, var(--neon-azure) 1px, transparent 1px), linear-gradient(to bottom, var(--neon-azure) 1px, transparent 1px)',
               backgroundSize: '16px 16px',
             }}
           />
           {/* dev bar */}
-          <div className="absolute top-0 left-0 right-0 px-4 py-2 flex justify-between font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)] bg-[var(--bg-void)] border-b border-[var(--acid)]">
+          <div className="absolute top-0 left-0 right-0 px-4 py-2 flex justify-between font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-azure)] bg-[var(--bg-void)] border-b border-[var(--neon-azure)]">
             <span>MODO RAW</span>
             <RawStats />
           </div>
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)] bg-[var(--bg-void)] border border-[var(--acid)] px-4 py-2">
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-azure)] bg-[var(--bg-void)] border border-[var(--neon-azure)] px-4 py-2">
             MODO RAW ACTIVADO · ESTÁS VIENDO LO QUE NOSOTROS VEMOS
           </div>
         </motion.div>

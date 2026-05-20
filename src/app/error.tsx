@@ -29,7 +29,7 @@ export default function ErrorBoundary({
         <button
           type="button"
           onClick={reset}
-          className="px-8 py-4 border border-[var(--stroke-strong)] font-mono text-micro uppercase tracking-[0.18em] hover:bg-[var(--acid)] hover:text-[var(--bg-void)] transition-colors"
+          className="px-8 py-4 border border-[var(--stroke-strong)] font-mono text-micro uppercase tracking-[0.18em] hover:bg-[var(--neon-azure)] hover:text-[var(--bg-void)] transition-colors"
         >
           REINTENTAR
         </button>

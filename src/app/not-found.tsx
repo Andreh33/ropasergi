@@ -63,7 +63,7 @@ export default function NotFound() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)]"
+              className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-azure)]"
             >
               INSISTES.
             </motion.p>
@@ -74,10 +74,10 @@ export default function NotFound() {
               animate={{ opacity: 1, y: 0 }}
               className="space-y-2"
             >
-              <p className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)]">
+              <p className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-azure)]">
                 BIEN, AHÍ TIENES.
               </p>
-              <code className="font-mono text-small text-[var(--ink)] border border-[var(--acid)] px-3 py-1 inline-block">
+              <code className="font-mono text-small text-[var(--ink)] border border-[var(--neon-azure)] px-3 py-1 inline-block">
                 INSISTENTE10
               </code>
             </motion.div>
@@ -93,11 +93,11 @@ export default function NotFound() {
             ← VOLVER AL UMBRAL
           </Link>
           <Link
-            href="/drop"
+            href="/tienda"
             data-cursor="link"
-            className="px-6 py-3 border border-[var(--acid)] text-[var(--acid)] hover:bg-[var(--acid)] hover:text-[var(--bg-void)] transition-colors"
+            className="px-6 py-3 border border-[var(--neon-azure)] text-[var(--neon-azure)] hover:bg-[var(--neon-azure)] hover:text-[var(--bg-void)] transition-colors"
           >
-            VER EL DROP →
+            VER LA TIENDA →
           </Link>
         </div>
       </div>

@@ -92,7 +92,7 @@ export function DogmaPillars() {
           {/* acento neón */}
           <span
             aria-hidden
-            className="absolute top-[14vh] left-[var(--grid-margin)] font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)]"
+            className="absolute top-[14vh] left-[var(--grid-margin)] font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-azure)]"
           >
             {'· '.repeat(i + 3).trim()}
           </span>

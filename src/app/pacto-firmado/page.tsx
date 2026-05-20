@@ -25,7 +25,7 @@ export default function PactoFirmadoPage() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(circle at 50% 38%, rgba(155,14,14,0.16) 0%, transparent 55%)',
+            'radial-gradient(circle at 50% 38%, rgba(255,18,48,0.16) 0%, transparent 55%)',
         }}
       />
       <div className="relative text-center max-w-2xl space-y-10">
@@ -46,14 +46,16 @@ export default function PactoFirmadoPage() {
           </p>
           <p>
             Si no llega nada, escribe a{' '}
-            <span className="font-mono not-italic text-[var(--acid)]">culto@proyecto-uno.com</span>{' '}
+            <span className="font-mono not-italic text-[var(--neon-azure)]">
+              culto@proyecto-uno.com
+            </span>{' '}
             con el número de orden.
           </p>
         </div>
         <Link
           href="/"
           data-cursor="link"
-          className="inline-block font-mono text-micro uppercase tracking-[0.18em] border border-[var(--stroke-strong)] px-8 py-4 hover:bg-[var(--acid)] hover:text-[var(--bg-void)] transition-colors"
+          className="inline-block font-mono text-micro uppercase tracking-[0.18em] border border-[var(--stroke-strong)] px-8 py-4 hover:bg-[var(--neon-azure)] hover:text-[var(--bg-void)] transition-colors"
         >
           VOLVER AL UMBRAL
         </Link>

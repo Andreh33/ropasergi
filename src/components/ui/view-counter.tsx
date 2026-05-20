@@ -22,7 +22,7 @@ export function ViewCounter({ min = 38, max = 67 }: { min?: number; max?: number
 
   return (
     <span
-      className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)]"
+      className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-azure)]"
       suppressHydrationWarning
     >
       VIENDO AHORA · {n}

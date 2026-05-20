@@ -19,36 +19,36 @@ type BandSpec = {
 
 const BANDS: BandSpec[] = [
   {
-    text: 'PROYECTO 01 ▲ DROP 01 ▲ MMXXVI ▲ ',
+    text: 'GUCCI ▲ LOUIS VUITTON ▲ BURBERRY ▲ ROLEX ▲ DIOR ▲ PRADA ▲ VERSACE ▲ ',
     angle: -12,
     xFrom: 30,
     xTo: -30,
-    highlights: ['PROYECTO', 'DROP'],
+    highlights: ['GUCCI', 'ROLEX', 'DIOR', 'VERSACE'],
     font: 'display',
     style: 'fill',
     color: 'var(--ink)',
   },
   {
     // banda central en SERIF ITALIC para que destaque al cruzarse con las otras
-    text: 'Deseo · Disciplina · Desprecio · ',
+    text: 'Selección · Tiempo · Verdad · ',
     angle: 6,
     xFrom: -30,
     xTo: 30,
-    highlights: ['Deseo', 'Disciplina', 'Desprecio'],
+    highlights: ['Selección', 'Tiempo', 'Verdad'],
     font: 'serif',
     style: 'fill',
-    color: 'var(--violet-glow)',
+    color: 'var(--neon-azure-glow)',
   },
   {
-    // banda inferior en OUTLINE display: contraste de relleno vs contorno
-    text: 'SEVILLA · ANDALUCÍA · INTEMPERIE · ',
+    // banda inferior en OUTLINE: contraste de relleno vs contorno, en rojo
+    text: 'TARRAGONA · CATALUNYA · MMXXVI · ',
     angle: -18,
     xFrom: 30,
     xTo: -30,
-    highlights: ['SEVILLA', 'INTEMPERIE'],
+    highlights: ['TARRAGONA'],
     font: 'mono',
     style: 'outline',
-    color: 'var(--acid)',
+    color: 'var(--neon-blood)',
   },
 ];
 
@@ -154,9 +154,9 @@ export function TiltedMarquee() {
         aria-hidden
       >
         <Link
-          href="/drop"
+          href="/tienda"
           data-cursor="link"
-          data-cursor-label="VIEW THE DROP"
+          data-cursor-label="VER LA TIENDA"
           className="block -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] pointer-events-auto"
         >
           <svg viewBox="0 0 320 320" className="absolute inset-0 mix-blend-difference">
@@ -169,7 +169,7 @@ export function TiltedMarquee() {
             </defs>
             <text className="fill-[var(--ink)] font-mono text-[11px] uppercase tracking-[0.4em]">
               <textPath href="#mq-circ" startOffset="0">
-                VIEW THE DROP · VIEW THE DROP · VIEW THE DROP ·
+                VER LA TIENDA · VER LA TIENDA · VER LA TIENDA ·
               </textPath>
             </text>
           </svg>
@@ -183,10 +183,10 @@ export function TiltedMarquee() {
 
       {/* Mobile fallback */}
       <Link
-        href="/drop"
-        className="md:hidden absolute bottom-8 right-6 inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)] border border-[var(--acid)] px-4 py-2"
+        href="/tienda"
+        className="md:hidden absolute bottom-8 right-6 inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-azure)] border border-[var(--neon-azure)] px-4 py-2"
       >
-        VER EL DROP →
+        VER LA TIENDA →
       </Link>
     </section>
   );
@@ -206,7 +206,7 @@ function RepeatedBand({ text, highlights }: { text: string; highlights: string[]
                 key={`${i}-${j}`}
                 className={
                   hi
-                    ? 'inline-block text-[var(--ink)] hover:text-[var(--acid)] transition-colors duration-500'
+                    ? 'inline-block text-[var(--ink)] hover:text-[var(--neon-azure)] transition-colors duration-500'
                     : 'inline-block'
                 }
                 data-highlight={hi || undefined}

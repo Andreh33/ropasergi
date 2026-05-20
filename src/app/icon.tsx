@@ -7,13 +7,13 @@ export default function Icon() {
   return new ImageResponse(
     <div
       style={{
-        background: '#060606',
+        background: '#050507',
         width: '100%',
         height: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: '#CCFF00',
+        color: '#1E63FF',
         fontFamily: 'system-ui',
         fontWeight: 900,
         fontSize: 22,

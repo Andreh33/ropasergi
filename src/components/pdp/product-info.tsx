@@ -42,7 +42,7 @@ export function ProductInfo({ product }: { product: Product }) {
       {/* Stock */}
       <p
         className={`font-mono text-micro uppercase tracking-[0.18em] ${
-          lowStock ? 'text-[var(--magenta)] animate-pulse' : 'text-[var(--ink-mute)]'
+          lowStock ? 'text-[var(--neon-blood)] animate-pulse' : 'text-[var(--ink-mute)]'
         }`}
       >
         {product.status === 'soldout'
@@ -69,11 +69,11 @@ export function ProductInfo({ product }: { product: Product }) {
           onMissingSize={() => sizePickerRef.current?.shake()}
         />
         <Link
-          href="/drop"
+          href="/tienda"
           data-cursor="link"
           className="inline-block font-mono text-micro uppercase tracking-[0.18em] text-[var(--ink-mute)] hover:text-[var(--ink)] transition-colors"
         >
-          ← VOLVER AL DROP
+          ← VOLVER A LA TIENDA
         </Link>
       </div>
 
@@ -119,7 +119,7 @@ export function ProductInfo({ product }: { product: Product }) {
             <li key={c} className="flex gap-3">
               <span
                 aria-hidden
-                className="text-[var(--acid)] not-italic font-mono text-small leading-[1.6]"
+                className="text-[var(--neon-azure)] not-italic font-mono text-small leading-[1.6]"
               >
                 ▸
               </span>

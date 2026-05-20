@@ -6,7 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const routes: MetadataRoute.Sitemap = [
     { url: `${base}/`, lastModified: now, priority: 1 },
-    { url: `${base}/drop`, lastModified: now, priority: 0.9 },
+    { url: `${base}/tienda`, lastModified: now, priority: 0.9 },
     { url: `${base}/manifiesto`, lastModified: now, priority: 0.7 },
     { url: `${base}/leyenda`, lastModified: now, priority: 0.3 },
   ];

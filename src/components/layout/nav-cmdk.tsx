@@ -56,7 +56,7 @@ export function NavCmdK({ open, onOpenChange }: Props) {
           className="fixed inset-0 backdrop-blur-md"
           style={{
             zIndex: 'var(--z-cmdk)' as unknown as number,
-            backgroundColor: 'rgba(6,6,6,0.85)',
+            backgroundColor: 'rgba(5,5,7,0.85)',
           }}
         >
           <motion.div
@@ -69,12 +69,12 @@ export function NavCmdK({ open, onOpenChange }: Props) {
           >
             <Command label="Paleta de comandos" className="text-[var(--ink)]">
               <Command.Input
-                placeholder="BUSCAR EL DROP, EL MANIFIESTO O EL CULTO..."
+                placeholder="BUSCAR LA TIENDA, EL MANIFIESTO O EL CULTO..."
                 className="w-full px-5 py-5 bg-transparent border-b border-[var(--stroke)] font-mono text-micro uppercase tracking-[0.18em] placeholder:text-[var(--ink-mute)]"
               />
               <Command.List className="max-h-[60vh] overflow-y-auto p-2">
                 <Command.Empty className="px-4 py-6 font-serif italic text-h3 text-[var(--ink-mute)]">
-                  Nada. Prueba con: hoodie, chaqueta, manifiesto, Sevilla.
+                  Nada. Prueba con: chándal, reloj, manifiesto, Tarragona.
                 </Command.Empty>
 
                 <Command.Group
@@ -83,14 +83,14 @@ export function NavCmdK({ open, onOpenChange }: Props) {
                 >
                   {[
                     { label: 'Manifiesto', href: '/manifiesto' },
-                    { label: 'Drop', href: '/drop' },
+                    { label: 'Tienda', href: '/tienda' },
                     { label: 'El culto', href: '/#culto' },
                     { label: 'Leyenda', href: '/leyenda' },
                   ].map((it) => (
                     <Command.Item
                       key={it.href}
                       onSelect={() => go(it.href)}
-                      className="px-3 py-2 cursor-pointer font-display text-h3 tracking-[-0.02em] text-[var(--ink)] data-[selected=true]:bg-[var(--acid)] data-[selected=true]:text-[var(--bg-void)]"
+                      className="px-3 py-2 cursor-pointer font-display text-h3 tracking-[-0.02em] text-[var(--ink)] data-[selected=true]:bg-[var(--neon-azure)] data-[selected=true]:text-[var(--bg-void)]"
                     >
                       {it.label}
                     </Command.Item>
@@ -105,7 +105,7 @@ export function NavCmdK({ open, onOpenChange }: Props) {
                     <Command.Item
                       key={p.slug}
                       onSelect={() => go(`/producto/${p.slug}`)}
-                      className="px-3 py-2 cursor-pointer font-display text-h3 tracking-[-0.02em] text-[var(--ink)] data-[selected=true]:bg-[var(--acid)] data-[selected=true]:text-[var(--bg-void)]"
+                      className="px-3 py-2 cursor-pointer font-display text-h3 tracking-[-0.02em] text-[var(--ink)] data-[selected=true]:bg-[var(--neon-azure)] data-[selected=true]:text-[var(--bg-void)]"
                     >
                       {p.name}
                     </Command.Item>
@@ -121,7 +121,7 @@ export function NavCmdK({ open, onOpenChange }: Props) {
                       toggleMute();
                       onOpenChange(false);
                     }}
-                    className="px-3 py-2 cursor-pointer font-display text-h3 text-[var(--ink)] data-[selected=true]:bg-[var(--acid)] data-[selected=true]:text-[var(--bg-void)]"
+                    className="px-3 py-2 cursor-pointer font-display text-h3 text-[var(--ink)] data-[selected=true]:bg-[var(--neon-azure)] data-[selected=true]:text-[var(--bg-void)]"
                   >
                     {muted ? 'Activar sonido' : 'Silenciar sonido'}
                   </Command.Item>
@@ -130,13 +130,13 @@ export function NavCmdK({ open, onOpenChange }: Props) {
                       openCart();
                       onOpenChange(false);
                     }}
-                    className="px-3 py-2 cursor-pointer font-display text-h3 text-[var(--ink)] data-[selected=true]:bg-[var(--acid)] data-[selected=true]:text-[var(--bg-void)]"
+                    className="px-3 py-2 cursor-pointer font-display text-h3 text-[var(--ink)] data-[selected=true]:bg-[var(--neon-azure)] data-[selected=true]:text-[var(--bg-void)]"
                   >
                     Abrir el carro
                   </Command.Item>
                   <Command.Item
                     onSelect={() => go('/')}
-                    className="px-3 py-2 cursor-pointer font-display text-h3 text-[var(--ink)] data-[selected=true]:bg-[var(--acid)] data-[selected=true]:text-[var(--bg-void)]"
+                    className="px-3 py-2 cursor-pointer font-display text-h3 text-[var(--ink)] data-[selected=true]:bg-[var(--neon-azure)] data-[selected=true]:text-[var(--bg-void)]"
                   >
                     Volver al inicio
                   </Command.Item>

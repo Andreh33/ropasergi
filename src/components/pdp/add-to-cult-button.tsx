@@ -37,7 +37,7 @@ export function AddToCultButton({ product, selectedSize, onMissingSize }: Props)
     // flash acid breve
     const flash = document.createElement('div');
     flash.style.cssText =
-      'position:fixed;inset:0;background:var(--acid);opacity:.35;z-index:9999;pointer-events:none;';
+      'position:fixed;inset:0;background:var(--neon-azure);opacity:.35;z-index:9999;pointer-events:none;';
     document.body.appendChild(flash);
     window.setTimeout(() => flash.remove(), 120);
 

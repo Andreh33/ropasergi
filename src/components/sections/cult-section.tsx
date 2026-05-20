@@ -67,7 +67,7 @@ export function CultSection() {
       // flash
       const flash = document.createElement('div');
       flash.style.cssText =
-        'position:fixed;inset:0;background:var(--acid);opacity:0.6;z-index:9999;pointer-events:none;mix-blend-mode:difference;';
+        'position:fixed;inset:0;background:var(--neon-azure);opacity:0.6;z-index:9999;pointer-events:none;mix-blend-mode:difference;';
       document.body.appendChild(flash);
       window.setTimeout(() => flash.remove(), 120);
       setStatus('success');
@@ -127,7 +127,7 @@ export function CultSection() {
               className="flex flex-col items-center gap-6"
             >
               <RitualSeal size={180} delay={0.15} />
-              <p className="font-display text-h3 tracking-[-0.02em] text-[var(--ritual-ink)]">
+              <p className="font-display text-h3 tracking-[-0.02em] text-[var(--neon-blood-glow)]">
                 ACEPTADO. ESPERA INSTRUCCIONES.
               </p>
             </motion.div>
@@ -146,7 +146,7 @@ export function CultSection() {
                   placeholder="EMAIL_PARA_ACCESO_PRIVADO@"
                   aria-label="Email"
                   data-cursor="input"
-                  className="w-full px-2 py-4 bg-transparent border-b border-[var(--stroke-strong)] font-mono text-small uppercase tracking-[0.18em] text-[var(--ink)] placeholder:text-[var(--ink-mute)] focus:border-[var(--acid)]"
+                  className="w-full px-2 py-4 bg-transparent border-b border-[var(--stroke-strong)] font-mono text-small uppercase tracking-[0.18em] text-[var(--ink)] placeholder:text-[var(--ink-mute)] focus:border-[var(--neon-azure)]"
                   {...register('email')}
                 />
                 {errors.email ? (

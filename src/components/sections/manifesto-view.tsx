@@ -91,7 +91,7 @@ export function ManifestoView() {
       {/* Sello ritual de cierre — lacre rojo sobre el papel */}
       <section className="max-w-[68rem] mx-auto pt-[6vh] pb-[2vh] flex flex-col items-center gap-6">
         <RitualSeal size={200} delay={0.1} />
-        <p className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--ritual)]">
+        <p className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-blood)]">
           SELLADO · SEVILLA · MMXXVI · ED. 001
         </p>
       </section>

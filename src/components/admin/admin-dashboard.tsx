@@ -67,13 +67,17 @@ export function AdminDashboard() {
     >
       <header className="flex items-end justify-between border-b border-[var(--stroke)] pb-6 mb-8">
         <div>
-          <p className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)]">
+          <p className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-azure)]">
             PANEL DE GESTIÓN
           </p>
           <h1 className="font-display text-h2 tracking-[-0.04em] uppercase">PROYECTO 1 · ADMIN</h1>
           <p className="mt-2 font-mono text-micro uppercase tracking-[0.18em] text-[var(--ink-mute)]">
             {products.length} PRODUCTOS · ALMACENAMIENTO:{' '}
-            <span className={backend === 'blob' ? 'text-[var(--acid)]' : 'text-[var(--magenta)]'}>
+            <span
+              className={
+                backend === 'blob' ? 'text-[var(--neon-azure)]' : 'text-[var(--neon-blood)]'
+              }
+            >
               {backend === 'blob' ? 'VERCEL BLOB' : 'LOCAL (DEV)'}
             </span>
           </p>
@@ -85,7 +89,7 @@ export function AdminDashboard() {
               setEditing(null);
               setShowForm(true);
             }}
-            className="px-6 py-3 bg-[var(--acid)] text-[var(--bg-void)] font-mono text-micro uppercase tracking-[0.18em]"
+            className="px-6 py-3 bg-[var(--neon-azure)] text-[var(--bg-void)] font-mono text-micro uppercase tracking-[0.18em]"
           >
             + NUEVO PRODUCTO
           </button>
@@ -139,7 +143,7 @@ export function AdminDashboard() {
                       setEditing(p);
                       setShowForm(true);
                     }}
-                    className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)] hover:underline"
+                    className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-azure)] hover:underline"
                   >
                     EDITAR
                   </button>

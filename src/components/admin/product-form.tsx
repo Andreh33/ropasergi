@@ -11,7 +11,7 @@ type Props = {
 
 const LABEL = 'block font-mono text-micro uppercase tracking-[0.18em] text-[var(--ink-mute)] mb-2';
 const INPUT =
-  'w-full px-3 py-3 bg-[var(--bg-asphalt)] border border-[var(--stroke-strong)] font-mono text-small text-[var(--ink)] focus:border-[var(--acid)]';
+  'w-full px-3 py-3 bg-[var(--bg-asphalt)] border border-[var(--stroke-strong)] font-mono text-small text-[var(--ink)] focus:border-[var(--neon-azure)]';
 
 export function ProductForm({ initial, onCancel, onSaved }: Props) {
   const [name, setName] = useState(initial?.name ?? '');
@@ -35,7 +35,7 @@ export function ProductForm({ initial, onCancel, onSaved }: Props) {
   const [images, setImages] = useState<ProductImage[]>(initial?.images ?? []);
   const [colors, setColors] = useState<ProductColor[]>(initial?.colors ?? []);
   const [colorName, setColorName] = useState('');
-  const [colorHex, setColorHex] = useState('#8b5cf6');
+  const [colorHex, setColorHex] = useState('#1e63ff');
 
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -417,7 +417,7 @@ export function ProductForm({ initial, onCancel, onSaved }: Props) {
               setColors((prev) => [...prev, { name: colorName.trim(), hex: colorHex }]);
               setColorName('');
             }}
-            className="px-5 py-3 border border-[var(--violet)] text-[var(--violet-glow)] font-mono text-micro uppercase tracking-[0.18em] hover:bg-[var(--violet)] hover:text-[var(--ink)]"
+            className="px-5 py-3 border border-[var(--neon-azure)] text-[var(--neon-azure-glow)] font-mono text-micro uppercase tracking-[0.18em] hover:bg-[var(--neon-azure)] hover:text-[var(--ink)]"
           >
             AÑADIR COLOR
           </button>
@@ -452,7 +452,7 @@ export function ProductForm({ initial, onCancel, onSaved }: Props) {
           className="font-mono text-micro text-[var(--ink-mute)]"
         />
         {uploading ? (
-          <p className="mt-2 font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)]">
+          <p className="mt-2 font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-azure)]">
             SUBIENDO...
           </p>
         ) : null}
@@ -468,7 +468,7 @@ export function ProductForm({ initial, onCancel, onSaved }: Props) {
         <button
           type="submit"
           disabled={saving || uploading}
-          className="px-8 py-4 bg-[var(--acid)] text-[var(--bg-void)] font-mono text-micro uppercase tracking-[0.18em] disabled:opacity-50"
+          className="px-8 py-4 bg-[var(--neon-azure)] text-[var(--bg-void)] font-mono text-micro uppercase tracking-[0.18em] disabled:opacity-50"
         >
           {saving ? 'GUARDANDO...' : 'GUARDAR PRODUCTO'}
         </button>

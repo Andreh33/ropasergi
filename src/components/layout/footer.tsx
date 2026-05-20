@@ -4,12 +4,12 @@ import Link from 'next/link';
 
 const COLUMNS = [
   {
-    title: 'DROP',
+    title: 'TIENDA',
     items: [
-      { label: 'Drop 01', href: '/drop' },
-      { label: 'Próximo drop', href: '/drop' },
-      { label: 'Tallas', href: '/leyenda#tallas' },
-      { label: 'Cuidados de prenda', href: '/leyenda#cuidados' },
+      { label: 'Toda la tienda', href: '/tienda' },
+      { label: 'Chándales', href: '/tienda' },
+      { label: 'Relojes', href: '/tienda' },
+      { label: 'Tallas y cuidados', href: '/leyenda#tallas' },
     ],
   },
   {
@@ -25,8 +25,8 @@ const COLUMNS = [
     title: 'MARCA',
     items: [
       { label: 'Manifiesto', href: '/manifiesto' },
-      { label: 'Trabaja con nosotros', href: '/leyenda#trabajo' },
-      { label: 'Sevilla', href: '/manifiesto' },
+      { label: 'Quiénes peritan', href: '/leyenda#trabajo' },
+      { label: 'Tarragona', href: '/manifiesto' },
     ],
   },
   {
@@ -59,7 +59,7 @@ export function Footer() {
                     <Link
                       href={it.href}
                       data-cursor="link"
-                      className="text-body text-[var(--ink)] hover:text-[var(--acid)] transition-colors"
+                      className="text-body text-[var(--ink)] hover:text-[var(--neon-azure)] transition-colors"
                     >
                       {it.label}
                     </Link>
@@ -80,7 +80,7 @@ export function Footer() {
 
       <div className="pb-6 pt-8 flex items-center justify-between border-t border-[var(--stroke)] text-[var(--ink-mute)]">
         <p className="font-mono text-micro uppercase tracking-[0.18em]">
-          MMXXVI © PROYECTO UNO SL · SEVILLA · ANDALUCÍA · ALMACÉN DE INTENCIONES
+          MMXXVI © PROYECTO UNO SL · TARRAGONA · CATALUNYA · VITRINA DE INTENCIONES
         </p>
         <LiveClock className="font-mono text-micro uppercase tracking-[0.18em] hidden md:block" />
       </div>

@@ -120,7 +120,7 @@ export function RitualSeal({ size = 240, className, autoStamp = true, delay = 0 
       <span
         data-wave
         className="absolute inset-0 rounded-full pointer-events-none"
-        style={{ border: '1px solid var(--ritual-ink)' }}
+        style={{ border: '1px solid var(--neon-blood-glow)' }}
       />
       {/* flash del estampado */}
       <span
@@ -128,7 +128,7 @@ export function RitualSeal({ size = 240, className, autoStamp = true, delay = 0 
         className="absolute inset-[14%] rounded-full pointer-events-none"
         style={{
           background:
-            'radial-gradient(circle, var(--ritual-ink) 0%, var(--ritual) 45%, transparent 72%)',
+            'radial-gradient(circle, var(--neon-blood-glow) 0%, var(--neon-blood) 45%, transparent 72%)',
         }}
       />
 
@@ -138,7 +138,7 @@ export function RitualSeal({ size = 240, className, autoStamp = true, delay = 0 
         width={size}
         height={size}
         className="relative"
-        style={{ filter: 'drop-shadow(0 0 14px rgba(155,14,14,0.45))' }}
+        style={{ filter: 'drop-shadow(0 0 14px rgba(255,18,48,0.45))' }}
       >
         <defs>
           <path
@@ -155,7 +155,7 @@ export function RitualSeal({ size = 240, className, autoStamp = true, delay = 0 
           cy={C}
           r={R_OUTER}
           fill="none"
-          stroke="var(--ritual)"
+          stroke="var(--neon-blood)"
           strokeWidth={1.5}
         />
         <circle
@@ -164,13 +164,13 @@ export function RitualSeal({ size = 240, className, autoStamp = true, delay = 0 
           cy={C}
           r={R_INNER}
           fill="none"
-          stroke="var(--ritual)"
+          stroke="var(--neon-blood)"
           strokeWidth={0.75}
           opacity={0.7}
         />
 
         {/* ticks radiales */}
-        <g stroke="var(--ritual)" strokeWidth={0.75} opacity={0.65}>
+        <g stroke="var(--neon-blood)" strokeWidth={0.75} opacity={0.65}>
           {TICKS.map((t, i) => (
             <line
               key={i}
@@ -187,7 +187,7 @@ export function RitualSeal({ size = 240, className, autoStamp = true, delay = 0 
         {/* texto rotando */}
         <g data-text-ring>
           <text
-            fill="var(--ritual-ink)"
+            fill="var(--neon-blood-glow)"
             className="font-mono"
             fontSize="9"
             letterSpacing="3.4"
@@ -204,7 +204,7 @@ export function RitualSeal({ size = 240, className, autoStamp = true, delay = 0 
           data-draw
           d="M72,82 L148,82 L110,158 Z"
           fill="none"
-          stroke="var(--ritual)"
+          stroke="var(--neon-blood)"
           strokeWidth={1.5}
         />
         <line
@@ -213,20 +213,20 @@ export function RitualSeal({ size = 240, className, autoStamp = true, delay = 0 
           y1="118"
           x2="134"
           y2="118"
-          stroke="var(--ritual)"
+          stroke="var(--neon-blood)"
           strokeWidth={1.5}
         />
 
         {/* 3 marcas de dogma a 120° */}
         {DOGMA_MARKS.map((m, i) => (
           <g key={i}>
-            <circle cx={m.x} cy={m.y} r={3.2} fill="var(--ritual-ink)" />
+            <circle cx={m.x} cy={m.y} r={3.2} fill="var(--neon-blood-glow)" />
             <circle
               cx={m.x}
               cy={m.y}
               r={6.5}
               fill="none"
-              stroke="var(--ritual)"
+              stroke="var(--neon-blood)"
               strokeWidth={0.75}
             />
           </g>
@@ -241,7 +241,7 @@ export function RitualSeal({ size = 240, className, autoStamp = true, delay = 0 
           fontSize="15"
           fontWeight="900"
           letterSpacing="-0.5"
-          fill="var(--ritual-ink)"
+          fill="var(--neon-blood-glow)"
         >
           P1
         </text>

@@ -64,7 +64,7 @@ export function LogoTripleClick() {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 8 }}
-          className="fixed bottom-6 right-6 font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)] bg-[var(--bg-void)] border border-[var(--acid)] px-4 py-2"
+          className="fixed bottom-6 right-6 font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-azure)] bg-[var(--bg-void)] border border-[var(--neon-azure)] px-4 py-2"
           style={{ zIndex: 'var(--z-toast)' as unknown as number }}
         >
           BIEN HECHO. AHORA SIGUE BAJANDO.

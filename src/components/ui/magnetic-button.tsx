@@ -74,7 +74,7 @@ export function MagneticButton({
       <span className="relative z-10">{children}</span>
       {variant === 'primary' ? (
         <span
-          className="absolute inset-0 bg-[var(--acid)] pointer-events-none"
+          className="absolute inset-0 bg-[var(--neon-azure)] pointer-events-none"
           style={{
             clipPath: 'inset(100% 0 0 0)',
             transition: 'clip-path .5s cubic-bezier(.18,0,0,1)',

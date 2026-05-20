@@ -23,7 +23,7 @@ export function MuteToggle() {
         onClick={handleClick}
         data-cursor="button"
         aria-label={muted ? 'Activar sonido' : 'Silenciar'}
-        className="relative grid place-items-center w-9 h-9 text-[var(--ink)] hover:text-[var(--acid)] transition-colors"
+        className="relative grid place-items-center w-9 h-9 text-[var(--ink)] hover:text-[var(--neon-azure)] transition-colors"
       >
         <AnimatePresence mode="wait">
           {muted ? (
@@ -54,7 +54,7 @@ export function MuteToggle() {
           <motion.span
             animate={{ scale: [1, 1.08, 1] }}
             transition={{ duration: 1.4, repeat: Number.POSITIVE_INFINITY, repeatDelay: 6 }}
-            className="absolute inset-0 rounded-full border border-[var(--acid)] opacity-40 pointer-events-none"
+            className="absolute inset-0 rounded-full border border-[var(--neon-azure)] opacity-40 pointer-events-none"
             aria-hidden
           />
         ) : null}
@@ -65,7 +65,7 @@ export function MuteToggle() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
-            className="fixed bottom-6 left-6 z-[var(--z-toast)] font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)] bg-[var(--bg-void)] border border-[var(--stroke-strong)] px-4 py-2"
+            className="fixed bottom-6 left-6 z-[var(--z-toast)] font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-azure)] bg-[var(--bg-void)] border border-[var(--stroke-strong)] px-4 py-2"
             style={{ zIndex: 'var(--z-toast)' as unknown as number }}
           >
             SONIDO ACTIVADO

@@ -82,12 +82,12 @@ export function CartDrawer() {
                     Aún no has elegido nada.
                   </p>
                   <Link
-                    href="/drop"
+                    href="/tienda"
                     data-cursor="link"
                     onClick={close}
-                    className="inline-block font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)]"
+                    className="inline-block font-mono text-micro uppercase tracking-[0.18em] text-[var(--neon-azure)]"
                   >
-                    VER EL DROP →
+                    VER LA TIENDA →
                   </Link>
                 </div>
               ) : (
