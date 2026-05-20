@@ -27,9 +27,9 @@ export const MANIFESTO = {
     D: {
       title: 'QUÉ PROMETEMOS',
       paragraphs: [
-        'Ocho prendas. Una al mes hasta marzo. Después, otra cosa.',
-        'Cada una con un número de serie sobre el cuello interior. Cada una con un papel doblado dentro del bolsillo trasero — el manuscrito de quien la pensó.',
-        'No tendremos rebajas. No haremos remontes. No volveremos a producir lo que se agote.',
+        'Las mejores marcas. Elegidas una a una. Al precio que deberían costar.',
+        'No inventamos prendas: las buscamos, las conseguimos y te las traemos sin el peaje de siempre.',
+        'No haremos rebajas falsas. No inflamos para descontar. El precio es el precio.',
       ],
     },
     E: {
@@ -66,32 +66,26 @@ export type Dogma = {
 export const DOGMAS: Dogma[] = [
   {
     id: '01',
-    word: 'DESEO',
+    word: 'SELECCIÓN',
     numerator: 'DOGMA · 01 / 03',
-    main: 'Diseñamos lo que no necesitas, por eso lo querrás.',
-    sub: [
-      'Una prenda útil cumple su función y se olvida.',
-      'Una prenda necesaria cumple la tuya y la recuerdas.',
-    ],
+    main: 'No fabricamos nada. Elegimos lo que merece la pena.',
+    sub: ['Las mejores marcas ya existen.', 'Nuestro oficio es saber cuáles y traerlas hasta ti.'],
   },
   {
     id: '02',
-    word: 'DISCIPLINA',
+    word: 'PRECIO',
     numerator: 'DOGMA · 02 / 03',
-    main: 'Cada costura ha sido revisada por una mano que aún no perdona.',
-    sub: [
-      'Pagas la prenda dos veces. Una al comprarla.',
-      'La otra cada vez que aguanta lo que no debería.',
-    ],
+    main: 'Cada marca pasa por un precio que no perdona.',
+    sub: ['Pagas la prenda. Nada más.', 'No pagas el margen que otros le inventan.'],
   },
   {
     id: '03',
     word: 'DESPRECIO',
     numerator: 'DOGMA · 03 / 03',
-    main: 'Por las tendencias. Por la tibieza. Por el algoritmo.',
+    main: 'Por los márgenes. Por las rebajas falsas. Por el algoritmo.',
     sub: [
-      'No diseñamos para gustarle a quien todavía no nos conoce.',
-      'Diseñamos para que tú no necesites enseñarlo.',
+      'No subimos el precio para fingir un descuento.',
+      'Lo que ves es lo que vale. El primero y el último.',
     ],
   },
 ];
