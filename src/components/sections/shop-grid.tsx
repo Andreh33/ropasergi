@@ -1,5 +1,6 @@
 'use client';
 import { NeonTag } from '@/components/ui/neon-tag';
+import { CATEGORY_LABEL } from '@/lib/data/brands';
 import type { Product } from '@/lib/types';
 import { cn, formatPrice } from '@/lib/utils';
 import { SlidersHorizontal, X } from 'lucide-react';
@@ -8,15 +9,11 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 
 function deriveCategory(p: Product): string {
-  if (p.category?.trim()) return p.category;
+  if (p.category) return CATEGORY_LABEL[p.category] ?? p.category;
+  // fallback legacy (productos antiguos sin categoría enum)
   const n = p.name.toUpperCase();
-  if (/HOODIE|SUDADERA/.test(n)) return 'Sudaderas';
-  if (/T-?SHIRT|TEE|CAMISET/.test(n)) return 'Camisetas';
-  if (/CARGO|PANT|PANTAL/.test(n)) return 'Pantalones';
-  if (/JACKET|CHAQUETA|ABRIGO/.test(n)) return 'Chaquetas';
-  if (/BOOT|BOTA|ZAPAT|SNEAKER/.test(n)) return 'Calzado';
-  if (/TOTE|BAG|BOLSA|BALACLAVA|GORRO/.test(n)) return 'Accesorios';
-  return 'Otros';
+  if (/RELOJ|WATCH|DATEJUST|SUBMARINER|NAUTILUS|ROYAL OAK|SPEEDMASTER/.test(n)) return 'Relojes';
+  return 'Chándales';
 }
 
 type Availability = 'all' | 'available' | 'soldout';

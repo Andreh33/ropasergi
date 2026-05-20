@@ -1,7 +1,13 @@
 'use client';
+import { BRAND_META } from '@/lib/data/brands';
 import type { Product, ProductColor, ProductImage } from '@/lib/types';
 import { slugify } from '@/lib/utils';
 import { useState } from 'react';
+
+const BRAND_OPTIONS = Object.entries(BRAND_META).map(([key, m]) => ({
+  key,
+  name: m.displayName,
+}));
 
 type Props = {
   initial: Product | null;
@@ -16,17 +22,28 @@ const INPUT =
 export function ProductForm({ initial, onCancel, onSaved }: Props) {
   const [name, setName] = useState(initial?.name ?? '');
   const [slug, setSlug] = useState(initial?.slug ?? '');
-  const [edition, setEdition] = useState(initial?.edition ?? '001 / 100');
+  const [edition, setEdition] = useState(initial?.edition ?? 'PIEZA ÚNICA');
   const [price, setPrice] = useState(String(initial?.price.amount ?? ''));
-  const [total, setTotal] = useState(String(initial?.numbered.total ?? '100'));
-  const [available, setAvailable] = useState(String(initial?.numbered.available ?? '100'));
+  const [total, setTotal] = useState(String(initial?.numbered.total ?? '1'));
+  const [available, setAvailable] = useState(String(initial?.numbered.available ?? '1'));
   const [shortDescriptor, setShortDescriptor] = useState(initial?.shortDescriptor ?? '');
   const [editorial, setEditorial] = useState(initial?.editorial ?? '');
   const [material, setMaterial] = useState(initial?.technical.material ?? '');
   const [weight, setWeight] = useState(initial?.technical.weight ?? '');
   const [origin, setOrigin] = useState(initial?.technical.origin ?? '');
   const [tailoring, setTailoring] = useState(initial?.technical.tailoring ?? '');
-  const [category, setCategory] = useState(initial?.category ?? '');
+  const [category, setCategory] = useState<'CHANDAL' | 'RELOJ'>(initial?.category ?? 'CHANDAL');
+  const [brand, setBrand] = useState<string>(initial?.brand ?? '');
+  const [reference, setReference] = useState(initial?.reference ?? '');
+  const [year, setYear] = useState(initial?.year ? String(initial.year) : '');
+  const [condition, setCondition] = useState<string>(initial?.condition ?? 'EXCELENTE');
+  const [movement, setMovement] = useState(initial?.movement ?? '');
+  const [caseSize, setCaseSize] = useState(initial?.caseSize ?? '');
+  const [waterResistance, setWaterResistance] = useState(initial?.waterResistance ?? '');
+  const [hasPapers, setHasPapers] = useState(initial?.hasPapers ?? false);
+  const [serialNumber, setSerialNumber] = useState(initial?.authentication?.serialNumber ?? '');
+  const [authDocs, setAuthDocs] = useState((initial?.authentication?.documents ?? []).join('\n'));
+  const [verified, setVerified] = useState(initial?.meta?.verified ?? true);
   const [sizes, setSizes] = useState((initial?.sizes ?? ['UNICA']).join(', '));
   const [soldoutSizes, setSoldoutSizes] = useState((initial?.soldoutSizes ?? []).join(', '));
   const [care, setCare] = useState((initial?.care ?? []).join('\n'));
@@ -69,6 +86,20 @@ export function ProductForm({ initial, onCancel, onSaved }: Props) {
       slug: slug || slugify(name),
       name,
       category,
+      brand: brand || undefined,
+      reference,
+      year: year || undefined,
+      condition,
+      movement: movement || undefined,
+      caseSize: caseSize || undefined,
+      waterResistance: waterResistance || undefined,
+      hasPapers,
+      serialNumber: serialNumber || undefined,
+      authDocuments: authDocs
+        .split('\n')
+        .map((s) => s.trim())
+        .filter(Boolean),
+      verified,
       colors,
       edition,
       price: Number(price),
@@ -143,24 +174,35 @@ export function ProductForm({ initial, onCancel, onSaved }: Props) {
         </div>
         <div>
           <label className={LABEL} htmlFor="f-category">
-            CATEGORÍA
+            CATEGORÍA *
           </label>
-          <input
+          <select
             id="f-category"
             className={INPUT}
             value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            placeholder="Sudaderas, Camisetas, Calzado..."
-            list="cat-suggestions"
-          />
-          <datalist id="cat-suggestions">
-            <option value="Sudaderas" />
-            <option value="Camisetas" />
-            <option value="Pantalones" />
-            <option value="Chaquetas" />
-            <option value="Calzado" />
-            <option value="Accesorios" />
-          </datalist>
+            onChange={(e) => setCategory(e.target.value as 'CHANDAL' | 'RELOJ')}
+          >
+            <option value="CHANDAL">Chándal</option>
+            <option value="RELOJ">Reloj</option>
+          </select>
+        </div>
+        <div>
+          <label className={LABEL} htmlFor="f-brand">
+            MARCA
+          </label>
+          <select
+            id="f-brand"
+            className={INPUT}
+            value={brand}
+            onChange={(e) => setBrand(e.target.value)}
+          >
+            <option value="">— Sin marca —</option>
+            {BRAND_OPTIONS.map((b) => (
+              <option key={b.key} value={b.key}>
+                {b.name}
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <label className={LABEL} htmlFor="f-slug">
@@ -224,6 +266,91 @@ export function ProductForm({ initial, onCancel, onSaved }: Props) {
           />
         </div>
       </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <label className={LABEL} htmlFor="f-reference">
+            REFERENCIA
+          </label>
+          <input
+            id="f-reference"
+            className={INPUT}
+            value={reference}
+            onChange={(e) => setReference(e.target.value)}
+            placeholder="[VERIFICAR]"
+          />
+        </div>
+        <div>
+          <label className={LABEL} htmlFor="f-year">
+            AÑO
+          </label>
+          <input
+            id="f-year"
+            type="number"
+            className={INPUT}
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+            placeholder="2023"
+          />
+        </div>
+        <div>
+          <label className={LABEL} htmlFor="f-condition">
+            CONDICIÓN
+          </label>
+          <select
+            id="f-condition"
+            className={INPUT}
+            value={condition}
+            onChange={(e) => setCondition(e.target.value)}
+          >
+            <option value="NUEVO">Nuevo</option>
+            <option value="COMO_NUEVO">Como nuevo</option>
+            <option value="EXCELENTE">Excelente</option>
+            <option value="BUENO">Bueno</option>
+          </select>
+        </div>
+      </div>
+
+      {category === 'RELOJ' ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label className={LABEL} htmlFor="f-movement">
+              MOVIMIENTO
+            </label>
+            <input
+              id="f-movement"
+              className={INPUT}
+              value={movement}
+              onChange={(e) => setMovement(e.target.value)}
+              placeholder="Cal. 3235 automático"
+            />
+          </div>
+          <div>
+            <label className={LABEL} htmlFor="f-case">
+              CAJA
+            </label>
+            <input
+              id="f-case"
+              className={INPUT}
+              value={caseSize}
+              onChange={(e) => setCaseSize(e.target.value)}
+              placeholder="41 mm"
+            />
+          </div>
+          <div>
+            <label className={LABEL} htmlFor="f-water">
+              RESISTENCIA
+            </label>
+            <input
+              id="f-water"
+              className={INPUT}
+              value={waterResistance}
+              onChange={(e) => setWaterResistance(e.target.value)}
+              placeholder="100 m"
+            />
+          </div>
+        </div>
+      ) : null}
 
       <div>
         <label className={LABEL} htmlFor="f-desc">
@@ -335,6 +462,52 @@ export function ProductForm({ initial, onCancel, onSaved }: Props) {
           className={`${INPUT} min-h-24`}
           value={care}
           onChange={(e) => setCare(e.target.value)}
+        />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label className={LABEL} htmlFor="f-serial">
+            Nº DE SERIE (autenticación)
+          </label>
+          <input
+            id="f-serial"
+            className={INPUT}
+            value={serialNumber}
+            onChange={(e) => setSerialNumber(e.target.value)}
+            placeholder="[VERIFICAR]"
+          />
+        </div>
+        <div className="flex items-end gap-6 pb-3">
+          <label className="flex items-center gap-2 font-mono text-micro uppercase tracking-[0.18em] text-[var(--ink)] cursor-pointer">
+            <input
+              type="checkbox"
+              checked={hasPapers}
+              onChange={(e) => setHasPapers(e.target.checked)}
+            />
+            CON PAPELES
+          </label>
+          <label className="flex items-center gap-2 font-mono text-micro uppercase tracking-[0.18em] text-[var(--ink)] cursor-pointer">
+            <input
+              type="checkbox"
+              checked={verified}
+              onChange={(e) => setVerified(e.target.checked)}
+            />
+            VERIFICADO
+          </label>
+        </div>
+      </div>
+
+      <div>
+        <label className={LABEL} htmlFor="f-authdocs">
+          DOCUMENTOS DE AUTENTICACIÓN (uno por línea)
+        </label>
+        <textarea
+          id="f-authdocs"
+          className={`${INPUT} min-h-20`}
+          value={authDocs}
+          onChange={(e) => setAuthDocs(e.target.value)}
+          placeholder={'Caja y papeles originales\nPeritaje doble PROYECTO 1'}
         />
       </div>
 
