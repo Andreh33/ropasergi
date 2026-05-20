@@ -51,12 +51,12 @@ export function FeaturedDrop({ products }: { products: Product[] }) {
       <header className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
         <div>
           <p className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--acid)] mb-3">
-            DISPONIBLE AHORA · DROP 01
+            DISPONIBLE AHORA · {products.length} {products.length === 1 ? 'PRENDA' : 'PRENDAS'}
           </p>
           <h2 className="font-display text-h2 tracking-[-0.04em] leading-[0.9] uppercase">
-            OCHO OBJETOS.
+            DISPONIBLE
             <br />
-            UNA SOLA VEZ.
+            AHORA.
           </h2>
         </div>
         <Link
@@ -64,7 +64,7 @@ export function FeaturedDrop({ products }: { products: Product[] }) {
           prefetch
           className="self-start md:self-end font-mono text-micro uppercase tracking-[0.18em] border border-[var(--stroke-strong)] px-6 py-3 hover:bg-[var(--acid)] hover:text-[var(--bg-void)] transition-colors"
         >
-          VER TODO EL DROP →
+          VER TODA LA TIENDA →
         </Link>
       </header>
 

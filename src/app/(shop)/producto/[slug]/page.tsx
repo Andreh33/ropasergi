@@ -1,7 +1,6 @@
 import { ProductInfo } from '@/components/pdp/product-info';
 import { RelatedProducts } from '@/components/pdp/related-products';
 import { Viewer3DShell } from '@/components/pdp/viewer-3d-shell';
-import { WhoWearsIt } from '@/components/pdp/who-wears-it';
 import { PRODUCTS } from '@/lib/data/products';
 import { getCatalog, getCatalogProduct } from '@/lib/server/catalog';
 import type { Metadata } from 'next';
@@ -47,7 +46,6 @@ export default async function ProductPage({ params }: Params) {
         </div>
       </div>
 
-      <WhoWearsIt />
       <RelatedProducts products={related} />
     </article>
   );

@@ -1,5 +1,5 @@
 'use client';
-import { PurpleFlow } from '@/components/sections/purple-flow';
+import { NeonFlow } from '@/components/sections/neon-flow';
 import { CountUp } from '@/components/ui/count-up';
 import { ViewCounter } from '@/components/ui/view-counter';
 import { isBackForwardNav } from '@/lib/utils';
@@ -195,9 +195,9 @@ export function HeroManifesto() {
       onPointerMove={onPointerMove}
       className="relative h-[100dvh] w-full overflow-hidden bg-[var(--bg-void)]"
     >
-      {/* Fondo de vídeo morado generativo — siempre activo */}
+      {/* Fondo animado de neón — siempre activo */}
       <div className="absolute inset-0 z-0" aria-hidden>
-        <PurpleFlow className="h-full w-full" />
+        <NeonFlow className="h-full w-full" />
         <div
           className="absolute inset-0"
           style={{

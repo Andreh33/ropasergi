@@ -8,9 +8,15 @@ const imageSchema = z.object({
   type: z.enum(['front', 'back', 'detail', 'lifestyle']).default('front'),
 });
 
+const colorSchema = z.object({
+  name: z.string().min(1),
+  hex: z.string().min(1),
+});
+
 export const productFormSchema = z.object({
   slug: z.string().optional(),
   name: z.string().min(2, 'El nombre es obligatorio'),
+  category: z.string().default(''),
   edition: z.string().default('001 / 100'),
   total: z.coerce.number().int().positive().default(100),
   available: z.coerce.number().int().nonnegative().default(100),
@@ -24,6 +30,7 @@ export const productFormSchema = z.object({
   care: z.array(z.string()).default([]),
   sizes: z.array(z.string()).default(['UNICA']),
   soldoutSizes: z.array(z.string()).default([]),
+  colors: z.array(colorSchema).default([]),
   status: z.enum(['available', 'soldout']).default('available'),
   accent: z.enum(['acid', 'magenta', 'cyber']).optional(),
   images: z.array(imageSchema).default([]),
@@ -51,6 +58,8 @@ export function formToProduct(values: ProductFormValues): Product {
     care: values.care.filter((c) => c.trim().length > 0),
     sizes: values.sizes,
     ...(values.soldoutSizes.length ? { soldoutSizes: values.soldoutSizes } : {}),
+    ...(values.colors.length ? { colors: values.colors } : {}),
+    ...(values.category ? { category: values.category } : {}),
     images:
       values.images.length > 0
         ? values.images

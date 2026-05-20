@@ -1,5 +1,5 @@
 'use client';
-import type { Product, ProductImage } from '@/lib/types';
+import type { Product, ProductColor, ProductImage } from '@/lib/types';
 import { slugify } from '@/lib/utils';
 import { useState } from 'react';
 
@@ -26,12 +26,16 @@ export function ProductForm({ initial, onCancel, onSaved }: Props) {
   const [weight, setWeight] = useState(initial?.technical.weight ?? '');
   const [origin, setOrigin] = useState(initial?.technical.origin ?? '');
   const [tailoring, setTailoring] = useState(initial?.technical.tailoring ?? '');
+  const [category, setCategory] = useState(initial?.category ?? '');
   const [sizes, setSizes] = useState((initial?.sizes ?? ['UNICA']).join(', '));
   const [soldoutSizes, setSoldoutSizes] = useState((initial?.soldoutSizes ?? []).join(', '));
   const [care, setCare] = useState((initial?.care ?? []).join('\n'));
   const [status, setStatus] = useState<'available' | 'soldout'>(initial?.status ?? 'available');
   const [accent, setAccent] = useState<string>(initial?.accent ?? '');
   const [images, setImages] = useState<ProductImage[]>(initial?.images ?? []);
+  const [colors, setColors] = useState<ProductColor[]>(initial?.colors ?? []);
+  const [colorName, setColorName] = useState('');
+  const [colorHex, setColorHex] = useState('#8b5cf6');
 
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -64,6 +68,8 @@ export function ProductForm({ initial, onCancel, onSaved }: Props) {
     const payload = {
       slug: slug || slugify(name),
       name,
+      category,
+      colors,
       edition,
       price: Number(price),
       total: Number(total),
@@ -134,6 +140,27 @@ export function ProductForm({ initial, onCancel, onSaved }: Props) {
             }}
             required
           />
+        </div>
+        <div>
+          <label className={LABEL} htmlFor="f-category">
+            CATEGORÍA
+          </label>
+          <input
+            id="f-category"
+            className={INPUT}
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            placeholder="Sudaderas, Camisetas, Calzado..."
+            list="cat-suggestions"
+          />
+          <datalist id="cat-suggestions">
+            <option value="Sudaderas" />
+            <option value="Camisetas" />
+            <option value="Pantalones" />
+            <option value="Chaquetas" />
+            <option value="Calzado" />
+            <option value="Accesorios" />
+          </datalist>
         </div>
         <div>
           <label className={LABEL} htmlFor="f-slug">
@@ -341,6 +368,59 @@ export function ProductForm({ initial, onCancel, onSaved }: Props) {
             <option value="magenta">Magenta</option>
             <option value="cyber">Cyber</option>
           </select>
+        </div>
+      </div>
+
+      {/* Colores */}
+      <div>
+        <label className={LABEL}>COLORES (para el filtro de la tienda)</label>
+        <div className="flex flex-wrap gap-2 mb-3">
+          {colors.map((c, i) => (
+            <span
+              key={`${c.hex}-${i}`}
+              className="inline-flex items-center gap-2 pl-2 pr-1 py-1 border border-[var(--stroke-strong)] font-mono text-micro uppercase tracking-[0.12em]"
+            >
+              <span
+                className="w-4 h-4 border border-[var(--stroke-strong)]"
+                style={{ backgroundColor: c.hex }}
+              />
+              {c.name}
+              <button
+                type="button"
+                onClick={() => setColors((prev) => prev.filter((_, j) => j !== i))}
+                className="w-5 h-5 grid place-items-center text-[var(--ink-mute)] hover:text-[var(--blood)]"
+                aria-label={`Quitar ${c.name}`}
+              >
+                ×
+              </button>
+            </span>
+          ))}
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <input
+            type="color"
+            value={colorHex}
+            onChange={(e) => setColorHex(e.target.value)}
+            className="w-12 h-10 bg-transparent border border-[var(--stroke-strong)] cursor-pointer"
+            aria-label="Elegir color"
+          />
+          <input
+            className={`${INPUT} flex-1 min-w-[140px]`}
+            value={colorName}
+            onChange={(e) => setColorName(e.target.value)}
+            placeholder="Nombre del color (ej. Negro)"
+          />
+          <button
+            type="button"
+            onClick={() => {
+              if (!colorName.trim()) return;
+              setColors((prev) => [...prev, { name: colorName.trim(), hex: colorHex }]);
+              setColorName('');
+            }}
+            className="px-5 py-3 border border-[var(--violet)] text-[var(--violet-glow)] font-mono text-micro uppercase tracking-[0.18em] hover:bg-[var(--violet)] hover:text-[var(--ink)]"
+          >
+            AÑADIR COLOR
+          </button>
         </div>
       </div>
 

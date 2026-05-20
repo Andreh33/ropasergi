@@ -2,62 +2,57 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * Fondo de "vídeo" morado generativo (humo/flujo) con WebGL.
- * Se reproduce SIEMPRE, sin condiciones ni dependencias de red: es ideal como
- * fondo de vídeo robusto. Si en su lugar quieres un .mp4, mete el archivo en
- * /public/video y úsalo con <video autoPlay muted loop playsInline>.
+ * Fondo animado de líneas de neón fluidas (acid, magenta, cyber, violet) con glow,
+ * sobre fondo oscuro. Siempre activo, sin dependencias de red. Reemplaza la "mancha"
+ * difusa por algo más definido y vibrante, manteniendo el movimiento de fondo.
  */
 const FRAG = `
 precision highp float;
 uniform vec2 uRes;
 uniform float uTime;
 
-// fbm noise
 float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
-float noise(vec2 p){
-  vec2 i = floor(p); vec2 f = fract(p);
-  vec2 u = f*f*(3.0-2.0*f);
-  return mix(mix(hash(i+vec2(0.0,0.0)), hash(i+vec2(1.0,0.0)), u.x),
-             mix(hash(i+vec2(0.0,1.0)), hash(i+vec2(1.0,1.0)), u.x), u.y);
-}
-float fbm(vec2 p){
-  float v = 0.0; float a = 0.5;
-  for(int i=0;i<6;i++){ v += a*noise(p); p *= 2.0; a *= 0.5; }
-  return v;
+
+vec3 neonLine(vec2 uv, float yBase, float freq, float amp, float speed, float phase, vec3 color, float thick){
+  float y = yBase + sin(uv.x * freq + uTime * speed + phase) * amp
+                  + sin(uv.x * freq * 2.3 + uTime * speed * 0.6) * amp * 0.35;
+  float d = abs(uv.y - y);
+  float glow = thick / (d + 0.0008);
+  glow = pow(glow, 1.25);
+  return color * glow;
 }
 
 void main(){
   vec2 uv = gl_FragCoord.xy / uRes.xy;
-  vec2 p = uv * 3.0;
-  float t = uTime * 0.06;
-  // flujo
-  vec2 q = vec2(fbm(p + vec2(t, -t)), fbm(p + vec2(-t*0.7, t*0.5)));
-  float n = fbm(p + q*1.8 + vec2(t*0.4, t*0.2));
+  float aspect = uRes.x / uRes.y;
+  vec2 p = vec2(uv.x * aspect, uv.y);
 
-  // paleta morada
-  vec3 deep   = vec3(0.086, 0.075, 0.122);   // #16131f
-  vec3 violet = vec3(0.42, 0.18, 0.78);       // morado
-  vec3 glow   = vec3(0.72, 0.58, 0.96);       // morado claro
-  vec3 col = mix(deep, violet, smoothstep(0.25, 0.75, n));
-  col = mix(col, glow, smoothstep(0.65, 0.95, n) * 0.55);
+  vec3 col = vec3(0.0);
+  col += neonLine(p, 0.34, 2.0, 0.11,  0.55, 0.0, vec3(0.80, 1.00, 0.00), 0.0055); // acid
+  col += neonLine(p, 0.52, 1.6, 0.14, -0.45, 2.0, vec3(1.00, 0.12, 0.42), 0.0050); // magenta
+  col += neonLine(p, 0.66, 2.6, 0.09,  0.80, 4.0, vec3(0.00, 0.90, 1.00), 0.0040); // cyber
+  col += neonLine(p, 0.44, 1.3, 0.17,  0.38, 1.0, vec3(0.55, 0.36, 0.97), 0.0050); // violet
 
-  // viñeta para integrar con el fondo
-  float vig = smoothstep(1.15, 0.25, length(uv - 0.5));
-  col *= mix(0.35, 1.0, vig);
+  // fondo grafito-morado
+  vec3 bg = vec3(0.086, 0.075, 0.122);
+  col += bg;
 
   // grano sutil
-  col -= hash(uv * uRes.xy + uTime) * 0.025;
+  col -= hash(uv * uRes.xy + uTime) * 0.02;
 
+  // viñeta para integrar con el resto de la página
+  float vig = smoothstep(1.25, 0.35, length(uv - 0.5));
+  col *= mix(0.55, 1.0, vig);
+
+  // tone-map para que los glows no quemen
+  col = col / (col + vec3(1.0));
   gl_FragColor = vec4(col, 1.0);
 }
 `;
 
-const VERT = `
-attribute vec2 aPos;
-void main(){ gl_Position = vec4(aPos, 0.0, 1.0); }
-`;
+const VERT = 'attribute vec2 aPos; void main(){ gl_Position = vec4(aPos, 0.0, 1.0); }';
 
-export function PurpleFlow({ className }: { className?: string }) {
+export function NeonFlow({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -104,7 +99,7 @@ export function PurpleFlow({ className }: { className?: string }) {
       gl.uniform2f(uRes, canvas.width, canvas.height);
       gl.uniform1f(uTime, time);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
-      raf = requestAnimationFrame(loop); // siempre, sin condiciones
+      raf = requestAnimationFrame(loop);
     };
     loop();
 

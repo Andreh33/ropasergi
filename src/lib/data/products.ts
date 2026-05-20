@@ -23,6 +23,11 @@ export const PRODUCTS: Product[] = [
     ],
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
     soldoutSizes: ['XS'],
+    colors: [
+      { name: 'Gris', hex: '#9ca3af' },
+      { name: 'Negro', hex: '#15151a' },
+    ],
+    category: 'Sudaderas',
     images: [
       {
         src: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=1400&q=82',
@@ -70,6 +75,11 @@ export const PRODUCTS: Product[] = [
       'El gráfico se desvanece con uso — está calculado así.',
     ],
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    colors: [
+      { name: 'Hueso', hex: '#f5f1e8' },
+      { name: 'Negro', hex: '#15151a' },
+    ],
+    category: 'Camisetas',
     images: [
       {
         src: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1400&q=82',
@@ -112,6 +122,11 @@ export const PRODUCTS: Product[] = [
       'El color pierde un 7% en el primer lavado. Es deliberado.',
     ],
     sizes: ['S', 'M', 'L', 'XL'],
+    colors: [
+      { name: 'Piedra', hex: '#8a857a' },
+      { name: 'Oliva', hex: '#4b5320' },
+    ],
+    category: 'Pantalones',
     images: [
       {
         src: 'https://images.unsplash.com/photo-1517438476312-10d79c5f25d8?w=1400&q=82',
@@ -149,6 +164,8 @@ export const PRODUCTS: Product[] = [
     ],
     sizes: ['S', 'M', 'L', 'XL'],
     soldoutSizes: ['S', 'XL'],
+    colors: [{ name: 'Negro', hex: '#15151a' }],
+    category: 'Chaquetas',
     images: [
       {
         src: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=1400&q=82',
@@ -189,6 +206,8 @@ export const PRODUCTS: Product[] = [
       'El óxido del cobre es la pátina. Si lo limpias, lo estropeas.',
     ],
     sizes: ['UNICA'],
+    colors: [{ name: 'Crudo', hex: '#c9b896' }],
+    category: 'Accesorios',
     images: [
       {
         src: 'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=1400&q=82',
@@ -220,6 +239,11 @@ export const PRODUCTS: Product[] = [
     },
     care: ['Lavar a mano con champú neutro.', 'Secar plana sobre toalla.', 'Nunca centrifugado.'],
     sizes: ['UNICA'],
+    colors: [
+      { name: 'Negro', hex: '#15151a' },
+      { name: 'Ácido', hex: '#ccff00' },
+    ],
+    category: 'Accesorios',
     images: [
       {
         src: 'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=1400&q=82',
@@ -256,6 +280,11 @@ export const PRODUCTS: Product[] = [
       'Secar lejos de fuente de calor directa.',
     ],
     sizes: ['39', '40', '41', '42', '43', '44', '45', '46'],
+    colors: [
+      { name: 'Cuero', hex: '#6b4226' },
+      { name: 'Asfalto', hex: '#2a2a2e' },
+    ],
+    category: 'Calzado',
     images: [
       {
         src: 'https://images.unsplash.com/photo-1542838686-37da4a9fd1b3?w=1400&q=82',
@@ -292,6 +321,8 @@ export const PRODUCTS: Product[] = [
       'Si arruga, vaporiza. Nunca planchar directo.',
     ],
     sizes: ['S', 'M', 'L', 'XL'],
+    colors: [{ name: 'Antracita', hex: '#2a2a2e' }],
+    category: 'Pantalones',
     images: [
       {
         src: 'https://images.unsplash.com/photo-1473966968600-fa801b3a8612?w=1400&q=82',

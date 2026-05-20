@@ -8,12 +8,10 @@ export const metadata: Metadata = {
     default: 'PROYECTO 1 · Primer dogma. Última calle.',
     template: '%s · PROYECTO 1',
   },
-  description:
-    'Ocho prendas. Una cápsula. Una sola vez. Streetwear con códigos de lujo desde Sevilla.',
+  description: 'Streetwear con códigos de lujo desde Sevilla. Edición numerada.',
   openGraph: {
     title: 'PROYECTO 1 · Primer dogma. Última calle.',
-    description:
-      'Ocho prendas. Una cápsula. Una sola vez. Streetwear con códigos de lujo desde Sevilla.',
+    description: 'Streetwear con códigos de lujo desde Sevilla. Edición numerada.',
     type: 'website',
     locale: 'es_ES',
   },

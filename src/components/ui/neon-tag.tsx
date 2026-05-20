@@ -6,6 +6,13 @@ type Props = {
   className?: string;
 };
 
+const GLOW: Record<string, string> = {
+  acid: '0 0 12px rgba(204,255,0,0.55)',
+  magenta: '0 0 12px rgba(255,31,106,0.55)',
+  blood: '0 0 10px rgba(200,31,31,0.5)',
+  outline: 'none',
+};
+
 export function NeonTag({ children, variant = 'acid', className }: Props) {
   return (
     <span
@@ -15,10 +22,9 @@ export function NeonTag({ children, variant = 'acid', className }: Props) {
         variant === 'magenta' && 'bg-[var(--magenta)] text-[var(--ink)] border-[var(--magenta)]',
         variant === 'blood' && 'bg-[var(--blood)] text-[var(--ink)] border-[var(--blood)]',
         variant === 'outline' && 'bg-transparent text-[var(--ink)] border-[var(--stroke-strong)]',
-        'rounded-r1',
         className,
       )}
-      style={{ borderRadius: 'var(--r-1)' }}
+      style={{ borderRadius: 'var(--r-1)', boxShadow: GLOW[variant] }}
     >
       {children}
     </span>

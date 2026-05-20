@@ -1,5 +1,7 @@
 export type Size = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'UNICA' | string;
 
+export type ProductColor = { name: string; hex: string };
+
 export type ProductImage = {
   src: string;
   alt: string;
@@ -23,6 +25,8 @@ export type Product = {
   care: string[];
   sizes: Size[];
   soldoutSizes?: Size[];
+  colors?: ProductColor[];
+  category?: string;
   images: ProductImage[];
   drop: '01';
   status: 'available' | 'soldout';

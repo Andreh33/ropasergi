@@ -3,8 +3,8 @@ import { getCatalog } from '@/lib/server/catalog';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'EL DROP',
-  description: 'Ocho objetos numerados. Cuando se agoten, no volveremos a hacerlos.',
+  title: 'LA TIENDA',
+  description: 'Prendas numeradas. Cuando se agotan, no volvemos a hacerlas.',
 };
 
 export const dynamic = 'force-dynamic';
